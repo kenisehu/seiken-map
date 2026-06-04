@@ -6,6 +6,14 @@
 
 詳細仕様は [`HANDOFF.md`](./HANDOFF.md) を参照。
 
+## 本番環境（デプロイ済み）
+
+- 公開URL：**https://seiken-map.vercel.app**
+- Vercelプロジェクト：`kenisehus-projects/seiken-map`（Vite自動検出）。本番env（`VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`）設定済み。
+- Supabaseプロジェクト：`seiken-map`（ref `rcxhsdlsaotsjkhowblx`・東京リージョン）。3テーブル＋RLS適用済み、`facilities` 73件投入済み。
+- 再デプロイ：`vercel deploy --prod`（CLIログイン済み）。GitHubリポジトリをVercelに接続すれば `git push` 自動デプロイも可。
+- 計測URL例：`https://seiken-map.vercel.app/?src=qr&muni=nasushiobara`
+
 ## データの範囲について（重要）
 
 当初は4市（那須塩原市・所沢市・久喜市・武蔵野市）のパイロットを想定していたが、**精密検査（大腸内視鏡）の実施医療機関リストを公開しているのは栃木県のみ**だった（所沢・久喜・武蔵野＝埼玉/東京は市・県とも非公開で、精検機関は陽性者に個別通知する運用）。
