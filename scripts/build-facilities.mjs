@@ -100,60 +100,83 @@ const csvEscape = (s) => (/[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' :
 
 export const fullAddress = (row) => PREF + row[2]
 
-// scripts/coords.json（geocode.mjs が生成）: { [住所]: { lat, lng } }
-function loadCoords() {
-  const p = 'scripts/coords.json'
+// scripts/coords.json（geocode.mjs生成）, scripts/attributes.json（公式サイト調査）を読む
+function loadJson(p) {
   return existsSync(p) ? JSON.parse(readFileSync(p, 'utf8')) : {}
 }
 
+const BOOL_KEYS = [
+  'has_female_doctor', 'has_sedation', 'weekend', 'quick_reservation', 'parking',
+  'online_reservation', 'in_clinic_prep', 'barrier_free', 'credit_card', 'ct_colonography',
+]
+
 function generate() {
-  const coords = loadCoords()
+  const coords = loadJson('scripts/coords.json')
+  const attrs = loadJson('scripts/attributes.json')
   const csvLines = [CSV_COLUMNS.join(',')]
   const tsItems = []
+  const seedRows = []
   let withCoords = 0
+  let withSite = 0
+
+  const sqlEsc = (s) => String(s).replace(/'/g, "''")
+  const sqlStr = (s) => (s == null ? 'null' : `'${sqlEsc(s)}'`)
+  const sqlBool = (v) => (v === true ? 'true' : 'null')
 
   ROWS.forEach(([muni, name, addr, phone], i) => {
+    const id = `tg-${i + 1}`
     const address = PREF + addr
     const c = coords[address]
     const lat = c ? c.lat : null
     const lng = c ? c.lng : null
     if (c) withCoords++
 
+    const a = attrs[id] || {}
+    const website = a.website ?? null
+    const station = a.nearest_station ?? null
+    const walk = a.walk_minutes ?? null
+    if (website) withSite++
+
+    // CSV（boolは TRUE か空欄＝null。falseは入れない）
+    const csvBool = (k) => (a[k] === true ? 'TRUE' : '')
     const cols = [
       name, muni, address,
       lat == null ? '' : String(lat),
       lng == null ? '' : String(lng),
-      phone, '', '', '', '', '', '', '', '', '', '', '', '', '',
+      phone,
+      website ?? '',
+      station ?? '',
+      walk == null ? '' : String(walk),
+      ...BOOL_KEYS.map(csvBool),
       '{大腸内視鏡}', '', SOURCE_URL, 'TRUE',
     ]
     csvLines.push(cols.map(csvEscape).join(','))
 
+    // TS
+    const tsBools = BOOL_KEYS.map((k) => `    ${k}: ${a[k] === true ? 'true' : 'null'},`).join('\n')
     tsItems.push(`  {
-    id: 'tg-${i + 1}',
+    id: '${id}',
     name: ${JSON.stringify(name)},
     municipality: ${JSON.stringify(muni)},
     address: ${JSON.stringify(address)},
     lat: ${lat == null ? 'null' : lat},
     lng: ${lng == null ? 'null' : lng},
     phone: ${JSON.stringify(phone)},
-    website: null,
-    nearest_station: null,
-    walk_minutes: null,
-    has_female_doctor: null,
-    has_sedation: null,
-    weekend: null,
-    quick_reservation: null,
-    parking: null,
-    online_reservation: null,
-    in_clinic_prep: null,
-    barrier_free: null,
-    credit_card: null,
-    ct_colonography: null,
+    website: ${website == null ? 'null' : JSON.stringify(website)},
+    nearest_station: ${station == null ? 'null' : JSON.stringify(station)},
+    walk_minutes: ${walk == null ? 'null' : walk},
+${tsBools}
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: ${JSON.stringify(SOURCE_URL)},
     verified: true,
   },`)
+
+    // Supabaseシード行
+    const seedBools = BOOL_KEYS.map((k) => sqlBool(a[k])).join(',')
+    seedRows.push(
+      `  (${sqlStr(name)},${sqlStr(muni)},${sqlStr(address)},${lat == null ? 'null' : lat},${lng == null ? 'null' : lng},${sqlStr(phone)},${sqlStr(website)},${sqlStr(station)},${walk == null ? 'null' : walk},${seedBools},'{大腸内視鏡}',${sqlStr(SOURCE_URL)},true)`,
+    )
   })
 
   writeFileSync('data/facilities.csv', csvLines.join('\n') + '\n')
@@ -161,6 +184,7 @@ function generate() {
   const ts = `import type { Facility } from '../types'
 
 // 栃木県「大腸がん検診精密検査医療機関 登録名簿」(R7.8.25現在) より ${ROWS.length}施設
+// 属性（鎮静・駐車場・最寄り駅 等）は各施設の公式サイトで確認できた分のみ。不明はnull。
 // 出典PDF: ${SOURCE_URL}
 // このファイルは scripts/build-facilities.mjs で自動生成。直接編集しないこと。
 export const TOCHIGI_FACILITIES: Facility[] = [
@@ -169,26 +193,23 @@ ${tsItems.join('\n')}
 `
   writeFileSync('src/data/tochigiFacilities.ts', ts)
 
-  // Supabase用シード（CSVインポートの代わりに SQL Editor で実行できる）
-  const sqlEsc = (s) => String(s).replace(/'/g, "''")
-  const seedVals = ROWS.map(([muni, name, addr, phone]) => {
-    const address = PREF + addr
-    const c = coords[address]
-    return `  ('${sqlEsc(name)}','${sqlEsc(muni)}','${sqlEsc(address)}',${c ? c.lat : 'null'},${c ? c.lng : 'null'},'${sqlEsc(phone)}','{大腸内視鏡}','${SOURCE_URL}',true)`
-  }).join(',\n')
-  const seed = `-- 栃木県登録名簿 ${ROWS.length}施設のシードデータ
--- migration 0001 を適用後、SQL Editor で一度だけ実行する（再実行は重複するので注意）。
+  const seedCols = [
+    'name', 'municipality', 'address', 'lat', 'lng', 'phone', 'website',
+    'nearest_station', 'walk_minutes', ...BOOL_KEYS, 'exam_types', 'source_url', 'verified',
+  ]
+  const seed = `-- 栃木県登録名簿 ${ROWS.length}施設のシードデータ（属性は公式サイト確認分のみ）
+-- migration 0001 適用後に SQL Editor で実行。再投入する場合は先に truncate public.facilities cascade; する。
 -- 自動生成: scripts/build-facilities.mjs ／ 出典: ${SOURCE_URL}
 insert into public.facilities
-  (name, municipality, address, lat, lng, phone, exam_types, source_url, verified)
+  (${seedCols.join(', ')})
 values
-${seedVals}
+${seedRows.join(',\n')}
 ;
 `
   writeFileSync('supabase/seed.sql', seed)
 
   console.log(
-    `wrote ${ROWS.length} facilities (${withCoords} with coords) -> data/facilities.csv, src/data/tochigiFacilities.ts, supabase/seed.sql`,
+    `wrote ${ROWS.length} facilities (${withCoords} coords, ${withSite} websites) -> data/facilities.csv, src/data/tochigiFacilities.ts, supabase/seed.sql`,
   )
 }
 
