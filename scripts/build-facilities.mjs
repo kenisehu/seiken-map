@@ -124,7 +124,7 @@ function generate() {
       lat == null ? '' : String(lat),
       lng == null ? '' : String(lng),
       phone, '', '', '', '', '', '', '', '', '', '', '', '', '',
-      '{大腸内視鏡}', '', SOURCE_URL, 'FALSE',
+      '{大腸内視鏡}', '', SOURCE_URL, 'TRUE',
     ]
     csvLines.push(cols.map(csvEscape).join(','))
 
@@ -152,7 +152,7 @@ function generate() {
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: ${JSON.stringify(SOURCE_URL)},
-    verified: false,
+    verified: true,
   },`)
   })
 
@@ -174,7 +174,7 @@ ${tsItems.join('\n')}
   const seedVals = ROWS.map(([muni, name, addr, phone]) => {
     const address = PREF + addr
     const c = coords[address]
-    return `  ('${sqlEsc(name)}','${sqlEsc(muni)}','${sqlEsc(address)}',${c ? c.lat : 'null'},${c ? c.lng : 'null'},'${sqlEsc(phone)}','{大腸内視鏡}','${SOURCE_URL}',false)`
+    return `  ('${sqlEsc(name)}','${sqlEsc(muni)}','${sqlEsc(address)}',${c ? c.lat : 'null'},${c ? c.lng : 'null'},'${sqlEsc(phone)}','{大腸内視鏡}','${SOURCE_URL}',true)`
   }).join(',\n')
   const seed = `-- 栃木県登録名簿 ${ROWS.length}施設のシードデータ
 -- migration 0001 を適用後、SQL Editor で一度だけ実行する（再実行は重複するので注意）。

@@ -28,7 +28,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-2',
@@ -54,7 +54,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-3',
@@ -80,7 +80,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-4',
@@ -106,7 +106,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-5',
@@ -132,7 +132,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-6',
@@ -158,7 +158,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-7',
@@ -184,7 +184,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-8',
@@ -210,7 +210,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-9',
@@ -236,7 +236,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-10',
@@ -262,7 +262,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-11',
@@ -288,7 +288,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-12',
@@ -314,7 +314,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-13',
@@ -340,7 +340,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-14',
@@ -366,7 +366,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-15',
@@ -392,7 +392,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-16',
@@ -418,7 +418,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-17',
@@ -444,7 +444,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-18',
@@ -470,7 +470,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-19',
@@ -496,7 +496,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-20',
@@ -522,7 +522,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-21',
@@ -548,7 +548,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-22',
@@ -574,7 +574,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-23',
@@ -600,7 +600,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-24',
@@ -626,7 +626,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-25',
@@ -652,7 +652,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-26',
@@ -678,7 +678,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-27',
@@ -704,7 +704,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-28',
@@ -730,7 +730,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-29',
@@ -756,7 +756,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-30',
@@ -782,7 +782,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-31',
@@ -808,7 +808,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-32',
@@ -834,7 +834,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-33',
@@ -860,7 +860,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-34',
@@ -886,7 +886,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-35',
@@ -912,7 +912,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-36',
@@ -938,7 +938,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-37',
@@ -964,7 +964,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-38',
@@ -990,7 +990,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-39',
@@ -1016,7 +1016,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-40',
@@ -1042,7 +1042,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-41',
@@ -1068,7 +1068,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-42',
@@ -1094,7 +1094,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-43',
@@ -1120,7 +1120,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-44',
@@ -1146,7 +1146,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-45',
@@ -1172,7 +1172,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-46',
@@ -1198,7 +1198,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-47',
@@ -1224,7 +1224,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-48',
@@ -1250,7 +1250,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-49',
@@ -1276,7 +1276,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-50',
@@ -1302,7 +1302,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-51',
@@ -1328,7 +1328,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-52',
@@ -1354,7 +1354,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-53',
@@ -1380,7 +1380,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-54',
@@ -1406,7 +1406,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-55',
@@ -1432,7 +1432,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-56',
@@ -1458,7 +1458,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-57',
@@ -1484,7 +1484,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-58',
@@ -1510,7 +1510,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-59',
@@ -1536,7 +1536,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-60',
@@ -1562,7 +1562,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-61',
@@ -1588,7 +1588,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-62',
@@ -1614,7 +1614,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-63',
@@ -1640,7 +1640,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-64',
@@ -1666,7 +1666,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-65',
@@ -1692,7 +1692,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-66',
@@ -1718,7 +1718,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-67',
@@ -1744,7 +1744,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-68',
@@ -1770,7 +1770,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-69',
@@ -1796,7 +1796,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-70',
@@ -1822,7 +1822,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-71',
@@ -1848,7 +1848,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-72',
@@ -1874,7 +1874,7 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
   {
     id: 'tg-73',
@@ -1900,6 +1900,6 @@ export const TOCHIGI_FACILITIES: Facility[] = [
     exam_types: ['大腸内視鏡'],
     form_note: null,
     source_url: "https://www.city.nasushiobara.tochigi.jp/material/files/group/21/daityouseimitukensa3.pdf",
-    verified: false,
+    verified: true,
   },
 ]

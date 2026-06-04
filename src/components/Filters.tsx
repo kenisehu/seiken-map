@@ -27,6 +27,23 @@ interface FiltersProps {
 
 const WALK_OPTIONS = [5, 10, 15]
 
+function CheckItem({
+  checked,
+  onChange,
+  label,
+}: {
+  checked: boolean
+  onChange: () => void
+  label: string
+}) {
+  return (
+    <label className="check">
+      <input type="checkbox" checked={checked} onChange={onChange} />
+      <span className="check-label">{label}</span>
+    </label>
+  )
+}
+
 export default function Filters({ state, municipalities, onChange }: FiltersProps) {
   const [showExtra, setShowExtra] = useState(false)
 
@@ -53,24 +70,40 @@ export default function Filters({ state, municipalities, onChange }: FiltersProp
 
   return (
     <div className="filters">
-      {/* 自治体 */}
-      <div className="chip-row" role="group" aria-label="自治体で絞り込み">
-        <Chip active={state.municipality === 'all'} onClick={() => onChange({ municipality: 'all' })}>
-          すべての地域
-        </Chip>
+      {/* 市町タブ */}
+      <div className="tabs" role="tablist" aria-label="市町で絞り込み">
+        <button
+          type="button"
+          role="tab"
+          aria-selected={state.municipality === 'all'}
+          className={`tab${state.municipality === 'all' ? ' tab--active' : ''}`}
+          onClick={() => onChange({ municipality: 'all' })}
+        >
+          すべて
+        </button>
         {municipalities.map((m) => (
-          <Chip key={m} active={state.municipality === m} onClick={() => onChange({ municipality: m })}>
+          <button
+            key={m}
+            type="button"
+            role="tab"
+            aria-selected={state.municipality === m}
+            className={`tab${state.municipality === m ? ' tab--active' : ''}`}
+            onClick={() => onChange({ municipality: m })}
+          >
             {m}
-          </Chip>
+          </button>
         ))}
       </div>
 
-      {/* コア5フィルター（常時表示） */}
-      <div className="chip-row" role="group" aria-label="主要な条件で絞り込み">
+      {/* コア条件（チェックボックス・常時表示） */}
+      <div className="check-grid" role="group" aria-label="主要な条件で絞り込み">
         {CORE_FILTERS.map((f) => (
-          <Chip key={f.key} active={state.bools.includes(f.key)} onClick={() => toggleBool(f.key)}>
-            {f.short}
-          </Chip>
+          <CheckItem
+            key={f.key}
+            checked={state.bools.includes(f.key)}
+            onChange={() => toggleBool(f.key)}
+            label={f.short}
+          />
         ))}
       </div>
 
@@ -93,12 +126,18 @@ export default function Filters({ state, municipalities, onChange }: FiltersProp
 
       {showExtra && (
         <div className="filters-extra">
-          <div className="chip-row chip-row--wrap" role="group" aria-label="その他の条件">
-            {EXTRA_FILTERS.map((f) => (
-              <Chip key={f.key} active={state.bools.includes(f.key)} onClick={() => toggleBool(f.key)}>
-                {f.short}
-              </Chip>
-            ))}
+          <div className="filters-field">
+            <span className="filters-label">その他の対応</span>
+            <div className="check-grid">
+              {EXTRA_FILTERS.map((f) => (
+                <CheckItem
+                  key={f.key}
+                  checked={state.bools.includes(f.key)}
+                  onChange={() => toggleBool(f.key)}
+                  label={f.short}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="filters-field">
@@ -117,11 +156,14 @@ export default function Filters({ state, municipalities, onChange }: FiltersProp
 
           <div className="filters-field">
             <span className="filters-label">精密検査の種類</span>
-            <div className="chip-row chip-row--wrap">
+            <div className="check-grid">
               {EXAM_TYPES.map((t) => (
-                <Chip key={t} active={state.examTypes.includes(t)} onClick={() => toggleExam(t)}>
-                  {t}
-                </Chip>
+                <CheckItem
+                  key={t}
+                  checked={state.examTypes.includes(t)}
+                  onChange={() => toggleExam(t)}
+                  label={t}
+                />
               ))}
             </div>
           </div>
