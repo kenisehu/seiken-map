@@ -1,0 +1,2 @@
+name,municipality,address,lat,lng,phone,website,nearest_station,walk_minutes,has_female_doctor,has_sedation,weekend,quick_reservation,parking,online_reservation,in_clinic_prep,barrier_free,credit_card,ct_colonography,exam_types,form_note,source_url,verified
+（記入例：この行は削除してください）サンプル内視鏡クリニック,那須塩原市,"栃木県那須塩原市〇〇1-1-1",36.9612,140.0468,0287-00-0000,https://example.com,那須塩原駅,5,TRUE,TRUE,FALSE,TRUE,TRUE,TRUE,TRUE,TRUE,FALSE,"{大腸内視鏡,便潜血再検}","土曜も内視鏡検査を実施（記入例）",https://example.com/seiken-list,FALSE
