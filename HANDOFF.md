@@ -1,6 +1,72 @@
+# 📌 引継ぎ記録（最新の実装状況）
+
+最終更新：2026-06-05
+> 新しい担当者／別セッションが続きをやれるようにまとめた現状記録。**まずここを読む。** 当初の要件定義はこの下（「— 引き継ぎ書（プロジェクト仕様）」以降）に保存してあるが、一部は実装で変わっている（下記）。詳しいレビュー・判断事項は [STATUS.md](STATUS.md)。
+
+## 当初構想からの主な変更
+- **対象エリア**：当初4市（那須市/所沢/久喜/武蔵野）→ **栃木県（登録名簿73施設）に変更**。理由：精検実施機関リストを公開しているのは栃木県のみで、所沢/久喜/武蔵野は市・県とも非公開だった（那須塩原市は栃木県名簿に含まれる）。
+- **市町UI**：タブ → **プルダウン**。フィルターは「詳細/通常」の区別を撤廃し**全項目チェックボックスを常時表示**。
+- レビュー方針（選択式・承認制・自由記述なし）は変更なし。
+
+## いま動いているもの（URL・資産）
+- 本番（公開）: **https://seiken-map.vercel.app**
+- GitHub（公開）: **https://github.com/kenisehu/seiken-map** … `main` へ `git push` で**自動デプロイ**（Vercel連携済み）
+- Supabase: project ref **`rcxhsdlsaotsjkhowblx`**（東京）。テーブル facilities/reviews/events、RLS有効
+- ローカル: `npm run dev` → http://localhost:5173
+
+## 技術スタック / 構成
+- React + Vite + TypeScript。**地図ライブラリ無し**（Googleマップリンク）。react-router（`/`一覧・`/facility/:id`詳細）。
+- データ取得 `src/lib/facilities.ts`：Supabase接続時はDB、未接続時は同梱 `src/data/tochigiFacilities.ts` にフォールバック。
+- 環境変数：`VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY`（publishable key）。ローカル `.env`（git除外）＋ Vercel Production env に設定済み。
+
+## 主要ファイル
+- `src/pages/` ListPage（一覧/検索/現在地ソート/フィルタ）, FacilityDetailPage（詳細/電話テンプレ/バッジ/レビュー）
+- `src/components/` Filters（市町プルダウン＋チェックボックス）, FacilityCard, ReviewForm/ReviewSummary, CallTemplate, DisclaimerFooter
+- `src/lib/` supabase, facilities, reviews, events, geo, filters
+- `supabase/` migrations/0001_init.sql（スキーマ＋RLS）, seed.sql（初回投入）, update.sql（属性更新）
+- `data/` facilities.csv, import_template.csv（フォーム回収用）, **attribute-evidence.json（属性の根拠＝正本）**, attribute-sources.md（根拠台帳）
+- `scripts/` build-facilities.mjs, geocode.mjs, build-update.mjs, build-sources.mjs, attributes.json/coords.json（中間データ）
+- `docs/google-form.md`（施設アンケート設計）, `STATUS.md`（レビュー・判断事項）
+
+## データの作り方・更新（重要）
+一次ソースと生成フロー：
+1. 名簿（名称/住所/電話）= `scripts/build-facilities.mjs` の `ROWS`（栃木県登録名簿PDFから転記）。
+2. 緯度経度 = `node scripts/geocode.mjs`（国土地理院・無料。`scripts/coords.json` にキャッシュ）。
+3. 属性の**根拠** = `data/attribute-evidence.json`（公式サイトのURL＋引用。**ここが正本**）。属性の**値** = `scripts/attributes.json`（生成器が読む）。
+4. 生成 = `node scripts/build-facilities.mjs` → `data/facilities.csv` / `supabase/seed.sql` / `src/data/tochigiFacilities.ts`。
+5. 根拠台帳 = `node scripts/build-sources.mjs` → `data/attribute-sources.md`。
+6. DB反映：
+   - 初回投入 = `supabase/seed.sql` を SQL Editor で実行。
+   - 属性だけ更新 = `node scripts/build-update.mjs` → `supabase/update.sql` を SQL Editor で実行（UPDATE・非破壊）。
+
+⚠️ 次の担当者への注意：
+- 属性は「**公式サイトに明記がある分だけ true、不明は null（憶測しない）**」が鉄則。
+- 属性を直すときは `data/attribute-evidence.json`（根拠）と `scripts/attributes.json`（値）の**両方**を整合させる。現状この2つは手で同期（**evidence→attributes の自動生成スクリプトが未整備＝TODO**。作ると安全）。
+- 名簿が更新されたら `ROWS` を直して再生成。
+
+## デプロイ
+- `git push origin main` で本番自動デプロイ。または `vercel deploy --prod`。
+- Vercel Production env に Supabase 2値が必要（設定済み）。SPA fallback は `vercel.json`。
+
+## 運用タスク
+- **レビュー承認**：reviews は `approved=false` で入る。Supabase Table Editor で `approved=true` にすると表示（RLSで未承認は非表示）。
+- **計測集計**：events（qr_access/phone_tap/detail_view）。匿名insert可・読取はサービスロール/管理画面。
+- **QR計測**：配布URLに `?src=qr&muni=<slug>`（slug は `src/types.ts` の MUNI_SLUGS）。
+- **属性の補完**：`docs/google-form.md` のフォームで施設から回収 → DB更新。
+
+## 制約・ポリシー（厳守）
+- レビュー：承認制・選択式のみ・**自由記述カラムを作らない**（医療広告ガイドライン/誹謗中傷対策）。
+- データ：オール実在・憶測で埋めない・不明はnull・出典を残す（名簿＝source_url、属性＝公式サイト）。
+- 患者ログイン無し・お気に入り無し・スマホ優先・日本語のみ・免責フッター常時表示。
+
+## 残課題・判断事項
+→ **[STATUS.md](STATUS.md)** 参照（属性trueの抜き取り確認、掲載の法務/倫理、エリア拡張、フォーム運用、evidence→attributes自動化 など）。
+
+---
+
 # 精検実施機関マップ — 引き継ぎ書（プロジェクト仕様）
 
-最終更新：2026-06-04
+最終更新：2026-06-04（当初の要件定義。参考。一部は上記のとおり実装で変更）
 作成：要件定義の壁打ち（ブラウザ版 Claude）→ 実装は Claude Code へ引き継ぎ
 
 ---
