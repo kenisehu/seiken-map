@@ -105,6 +105,10 @@ export default function ListPage() {
         </p>
       </header>
 
+      <p className="reassure">
+        便潜血が陽性でも、すぐに大腸がんと決まったわけではありません。落ち着いて、まずは精密検査（大腸内視鏡）の予約をしましょう。
+      </p>
+
       {!isSupabaseConfigured && facilities && (
         <p className="data-note">
           出典：栃木県「大腸がん検診精密検査医療機関 登録名簿」（{facilities.length}施設・Supabase未接続）
@@ -133,14 +137,29 @@ export default function ListPage() {
       <Filters state={filters} municipalities={municipalities} onChange={patch} />
 
       {facilities == null ? (
-        <p className="list-status">読み込み中…</p>
+        <div className="card-list" aria-busy="true" aria-label="読み込み中">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <div className="skeleton skeleton-card" key={i} />
+          ))}
+        </div>
       ) : (
         <>
           <p className="list-count">{items.length} 件</p>
-          {items.length === 0 ? (
-            <p className="list-status">
-              条件に合う医療機関が見つかりませんでした。条件を減らしてお試しください。
+          {filters.bools.length > 0 && (
+            <p className="filter-note">
+              チェックした条件は「公式サイトで確認できた施設」のみ表示します。未記載＝未確認の施設は含まれていません。
             </p>
+          )}
+          {items.length === 0 ? (
+            <div className="list-status">
+              <p>条件に合う医療機関が見つかりませんでした。</p>
+              <p className="list-status-sub">
+                条件を減らすか、地域を「すべての地域」に戻してお試しください。属性が未確認の施設も多いため、気になる施設へ直接お電話で確認するのも確実です。
+              </p>
+              <button type="button" className="btn btn--ghost" onClick={() => setFilters(EMPTY_FILTERS)}>
+                条件をすべてクリア
+              </button>
+            </div>
           ) : (
             <div className="card-list">
               {items.map(({ facility, distanceKm }) => (

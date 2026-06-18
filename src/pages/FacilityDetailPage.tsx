@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import CallTemplate from '../components/CallTemplate'
 import ReviewSummary from '../components/ReviewSummary'
 import ReviewForm from '../components/ReviewForm'
+import ShareButton from '../components/ShareButton'
 import { fetchFacility } from '../lib/facilities'
 import { fetchReviewAggregate } from '../lib/reviews'
 import { recordEvent } from '../lib/events'
@@ -82,6 +83,14 @@ export default function FacilityDetailPage() {
         <a className="btn btn--primary btn--call" href={`tel:${facility.phone}`} onClick={onPhoneTap}>
           📞 予約電話：{facility.phone}
         </a>
+        <div className="detail-subactions">
+          {facility.website && (
+            <a className="btn btn--ghost" href={facility.website} target="_blank" rel="noreferrer">
+              🌐 公式サイト
+            </a>
+          )}
+          <ShareButton title={facility.name} />
+        </div>
       </div>
 
       <CallTemplate />
@@ -104,6 +113,9 @@ export default function FacilityDetailPage() {
             )
           })}
         </div>
+        <p className="attr-legend">
+          「—（未確認）」は公式サイトで確認できなかった項目で、非対応とは限りません。気になる項目は電話でご確認ください。
+        </p>
 
         {facility.exam_types && facility.exam_types.length > 0 && (
           <div className="exam-types">
@@ -118,13 +130,6 @@ export default function FacilityDetailPage() {
           </div>
         )}
 
-        {facility.website && (
-          <p className="detail-website">
-            <a href={facility.website} target="_blank" rel="noreferrer">
-              公式サイトを見る ›
-            </a>
-          </p>
-        )}
       </section>
 
       {facility.form_note && (
